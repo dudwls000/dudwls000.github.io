@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Youngjin — Character Concept Artist Portfolio" />
+  <title>YOUNGJIN — Character Concept Artist Portfolio</title>
+  <style>
+:root {
+  --bg: #f8fcfc;
+  --surface: #ffffff;
+  --ink: #102b2d;
+  --muted: #5c7d80;
+  --line: #c8e4e5;
+  --accent: #29bdc7;
+  --accent-deep: #168e96;
+  --home-bg: #29bdc7;
+  --home-ink: #ffffff;
+  --home-muted: rgba(255, 255, 255, 0.88);
+  --home-line: rgba(255, 255, 255, 0.24);
+  --pad: clamp(20px, 4vw, 64px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: -.02em;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--pad);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+.brand { font-size: 15px; font-weight: 800; letter-spacing: .08em; color: var(--accent-deep); }
+.main-nav { display: flex; gap: 26px; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.main-nav a { position: relative; }
+.main-nav a::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: -5px; height: 1px;
+  background: var(--accent); transition: right .2s ease;
+}
+.main-nav a:hover::after { right: 0; }
+
+main { padding: 0 var(--pad); }
+.home-section {
+  min-height: 72vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
+  align-items: end;
+  gap: clamp(44px, 8vw, 140px);
+  margin: 0 calc(-1 * var(--pad));
+  padding: clamp(84px, 11vw, 150px) var(--pad) 58px;
+  border-bottom: 1px solid var(--home-line);
+  background: var(--home-bg);
+}
+.home-main h1 {
+  margin: 0;
+  color: var(--home-ink);
+  font-size: clamp(78px, 13vw, 210px);
+  line-height: .78;
+  letter-spacing: -.075em;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(0,0,0,.06);
+}
+.home-intro {
+  max-width: 700px;
+  margin: 46px 0 0;
+  color: var(--home-muted);
+  font-size: clamp(14px, 1.25vw, 18px);
+  line-height: 1.65;
+}
+.home-side {
+  padding-bottom: 4px;
+  padding-left: clamp(8px, 1vw, 16px);
+}
+.home-meta, .home-social-links { display: flex; flex-direction: column; gap: 10px; }
+.home-meta { color: var(--home-muted); font-size: 12px; line-height: 1.45; }
+.home-social-kicker { margin-top: 0; }
+.home-social-links a {
+  width: fit-content;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--home-ink);
+  border-bottom: 1px solid rgba(255,255,255,.26);
+}
+.home-social-links a:hover { color: #ffffff; border-bottom-color: rgba(255,255,255,.85); }
+.home-email {
+  width: fit-content;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--home-ink);
+}
+.eyebrow, .section-kicker {
+  margin: 0 0 18px;
+  color: var(--home-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.work-section { padding: 46px 0 120px; background: var(--bg); }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.section-head h2 { margin: 0; font-size: 13px; letter-spacing: .08em; }
+.filters { display: flex; gap: 7px; flex-wrap: wrap; justify-content: flex-end; }
+.filter {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 11px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+.filter:hover, .filter.is-active { background: var(--accent); color: #06282a; border-color: var(--accent); }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  align-items: start;
+  gap: clamp(18px, 2.2vw, 34px) clamp(14px, 1.5vw, 24px);
+}
+.work-card { grid-column: span 4; cursor: pointer; transition: opacity .2s ease; }
+.work-card.wide { grid-column: span 8; }
+.work-card.is-hidden { display: none; }
+.work-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
+  background: transparent;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .3s ease;
+}
+.work-card.tall img,
+.work-card.wide img {
+  aspect-ratio: auto;
+}
+.work-card:hover img { transform: translateY(-3px); filter: contrast(1.02); }
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-meta span:first-child { color: var(--ink); }
+.card-meta span:last-child { color: var(--accent-deep); text-align: right; font-weight: 600; }
+
+.about-section, .contact-section {
+  padding: 70px 0 110px;
+  border-top: 1px solid var(--line);
+}
+.about-grid { display: grid; grid-template-columns: 1.4fr .6fr; gap: 70px; }
+.about-grid h2 {
+  margin: 0;
+  max-width: 900px;
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: .95;
+  letter-spacing: -.055em;
+}
+.about-copy { color: var(--muted); font-size: 14px; line-height: 1.65; max-width: 460px; }
+.about-copy p { margin: 0 0 18px; }
+.contact-mail {
+  display: inline-block;
+  font-size: clamp(42px, 7vw, 110px);
+  line-height: 1;
+  letter-spacing: -.06em;
+  border-bottom: 2px solid var(--accent);
+}
+.social-links { display: flex; gap: 28px; margin-top: 45px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.social-links a:hover { color: var(--accent-deep); }
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px var(--pad) 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.project-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: rgba(17, 20, 21, .97);
+}
+.project-dialog::backdrop {
+  background: rgba(17, 20, 21, .97);
+}
+.project-dialog[open] {
+  animation: lightboxIn .18s ease both;
+}
+@keyframes lightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(28px, 4vw, 72px) clamp(74px, 8vw, 150px);
+  cursor: zoom-out;
+}
+
+.lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.dialog-close,
+.lightbox-nav {
+  position: fixed;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.92);
+  cursor: pointer;
+  transition: background .16s ease, color .16s ease;
+  backdrop-filter: blur(6px);
+}
+
+.dialog-close:hover,
+.lightbox-nav:hover {
+  background: rgba(255,255,255,.16);
+  color: #fff;
+}
+
+.dialog-close {
+  top: 22px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  font-size: 30px;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  top: 50%;
+  width: 48px;
+  height: 64px;
+  transform: translateY(-50%);
+  font-size: 42px;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+@media (max-width: 620px) {
+  .lightbox-stage {
+    padding: 70px 56px 44px;
+  }
+
+  .dialog-close {
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+    font-size: 27px;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 56px;
+    font-size: 34px;
+  }
+
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+
+@media (max-width: 900px) {
+  .home-section { min-height: 62vh; grid-template-columns: 1fr; align-content: end; gap: 42px; }
+  .home-main h1 { font-size: clamp(74px, 17vw, 130px); }
+  .work-card, .work-card.wide { grid-column: span 6; }
+  .about-grid { grid-template-columns: 1fr; gap: 34px; }
+  .project-description { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .site-header { padding-top: 15px; padding-bottom: 15px; }
+  .main-nav { gap: 15px; font-size: 10px; }
+  .main-nav { overflow-x: auto; white-space: nowrap; max-width: 72vw; padding-bottom: 2px; }
+  .home-section { min-height: 58vh; padding-top: 72px; }
+  .home-main h1 { font-size: clamp(58px, 19vw, 96px); }
+  .home-intro { margin-top: 34px; }
+  .section-head { align-items: flex-start; flex-direction: column; }
+  .filters { justify-content: flex-start; }
+  .gallery { grid-template-columns: 1fr; gap: 32px; }
+  .work-card, .work-card.wide { grid-column: auto; }
+  .card-meta { font-size: 9px; }
+  .about-section, .contact-section { padding: 58px 0 80px; }
+  .contact-mail { font-size: clamp(32px, 11vw, 54px); }
+  .social-links { flex-direction: column; gap: 12px; }
+  .site-footer { flex-direction: column; }
+  .project-shell { padding-top: 86px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-block { min-height: 200px; }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="홈으로">YOUNGJIN</a>
+    <nav class="main-nav" aria-label="주 메뉴">
+      <a href="#home" data-home-link>HOME</a>
+      <a href="#work" data-nav-filter="character">CHARACTER</a>
+      <a href="#work" data-nav-filter="illustration">ILLUSTRATION</a>
+      <a href="#work" data-nav-filter="study">STUDY</a>
+      <a href="#work" data-nav-filter="fanart">FANART</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="home-section" id="home" aria-labelledby="home-title">
+      <div class="home-main">
+        <p class="eyebrow">CHARACTER CONCEPT ARTIST</p>
+        <h1 id="home-title">YOUNGJIN</h1>
+      </div>
+      <div class="home-side">
+        <p class="section-kicker home-social-kicker">SOCIAL</p>
+        <div class="home-social-links">
+          <a href="https://x.com/dango9998" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">X / TWITTER ↗</a>
+          <a href="https://www.instagram.com/dango_9998/?locale=ko-KR" target="_blank" rel="noopener noreferrer" aria-label="Instagram">INSTAGRAM ↗</a>
+          <span class="home-email">dankanbang22@gmail.com</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">WORK</h2>
+        <div class="filters" role="group" aria-label="작품 필터">
+          <button class="filter is-active" data-filter="character">CHARACTER</button>
+          <button class="filter" data-filter="illustration">ILLUSTRATION</button>
+          <button class="filter" data-filter="study">STUDY</button>
+          <button class="filter" data-filter="fanart">FANART</button>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <article class="work-card" data-category="character" tabindex="0" data-project="01" data-full="images/character/01.webp">
+                  <img src="images/character/01.webp" alt="SHARK PIRATE" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>SHARK PIRATE</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card wide" data-category="character" tabindex="0" data-project="02" data-full="images/character/02.webp">
+                  <img src="images/character/02.webp" alt="SHARK PIRATE DESIGN" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>SHARK PIRATE DESIGN</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card" data-category="character" tabindex="0" data-project="03" data-full="images/character/03.webp">
+                  <img src="images/character/03.webp" alt="SHARK PIRATE SD" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>SHARK PIRATE SD</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card" data-category="character" tabindex="0" data-project="04" data-full="images/character/04.webp">
+                  <img src="images/character/04.webp" alt="TIME MACHINE" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>TIME MACHINE</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card" data-category="character" tabindex="0" data-project="05" data-full="images/character/05.webp">
+                  <img src="images/character/05.webp" alt="URBAN FANTASY" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>URBAN FANTASY</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card tall" data-category="character" tabindex="0" data-project="06" data-full="images/character/06.webp">
+                  <img src="images/character/06.webp" alt="URBAN FANTASY A" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>URBAN FANTASY A</span><span>CHARACTER</span></div>
+                </article>
+        <article class="work-card" data-category="illustration" tabindex="0" data-project="07" data-full="images/illustration/07.webp">
+                  <img src="images/illustration/07.webp" alt="BOOK 1" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>BOOK 1</span><span>ILLUSTRATION</span></div>
+                </article>
+        <article class="work-card tall" data-category="study" tabindex="0" data-project="08" data-full="images/study/08.webp">
+                  <img src="images/study/08.webp" alt="STUDY 9" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 9</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card" data-category="study" tabindex="0" data-project="09" data-full="images/study/09.webp">
+                  <img src="images/study/09.webp" alt="STUDY 8" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 8</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card" data-category="study" tabindex="0" data-project="10" data-full="images/study/10.webp">
+                  <img src="images/study/10.webp" alt="STUDY 7" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 7</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card" data-category="study" tabindex="0" data-project="11" data-full="images/study/11.webp">
+                  <img src="images/study/11.webp" alt="STUDY 6" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 6</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card tall" data-category="study" tabindex="0" data-project="12" data-full="images/study/12.webp">
+                  <img src="images/study/12.webp" alt="STUDY 5" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 5</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card" data-category="study" tabindex="0" data-project="13" data-full="images/study/13.webp">
+                  <img src="images/study/13.webp" alt="STUDY 4" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 4</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card tall" data-category="study" tabindex="0" data-project="14" data-full="images/study/14.webp">
+                  <img src="images/study/14.webp" alt="STUDY 3" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 3</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card tall" data-category="study" tabindex="0" data-project="15" data-full="images/study/15.webp">
+                  <img src="images/study/15.webp" alt="STUDY 2" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 2</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card tall" data-category="study" tabindex="0" data-project="16" data-full="images/study/16.webp">
+                  <img src="images/study/16.webp" alt="STUDY 1" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>STUDY 1</span><span>STUDY</span></div>
+                </article>
+        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="17" data-full="images/fanart/17.webp">
+                  <img src="images/fanart/17.webp" alt="BLUE ARCHIVE" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>BLUE ARCHIVE</span><span>FANART</span></div>
+                </article>
+        <article class="work-card wide" data-category="fanart" tabindex="0" data-project="18" data-full="images/fanart/18.webp">
+                  <img src="images/fanart/18.webp" alt="ELDEN RING" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ELDEN RING</span><span>FANART</span></div>
+                </article>
+        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="19" data-full="images/fanart/19.webp">
+                  <img src="images/fanart/19.webp" alt="MECHA-UNI TO KURI" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>MECHA-UNI TO KURI</span><span>FANART</span></div>
+                </article>
+        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="20" data-full="images/fanart/20.webp">
+                  <img src="images/fanart/20.webp" alt="ZUTOMAYO 6" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 6</span><span>FANART</span></div>
+                </article>
+        <article class="work-card" data-category="fanart" tabindex="0" data-project="21" data-full="images/fanart/21.webp">
+                  <img src="images/fanart/21.webp" alt="ZUTOMAYO 5" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 5</span><span>FANART</span></div>
+                </article>
+        <article class="work-card" data-category="fanart" tabindex="0" data-project="22" data-full="images/fanart/22.webp">
+                  <img src="images/fanart/22.webp" alt="ZUTOMAYO 4" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 4</span><span>FANART</span></div>
+                </article>
+        <article class="work-card" data-category="fanart" tabindex="0" data-project="23" data-full="images/fanart/23.webp">
+                  <img src="images/fanart/23.webp" alt="ZUTOMAYO 3" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 3</span><span>FANART</span></div>
+                </article>
+        <article class="work-card" data-category="fanart" tabindex="0" data-project="24" data-full="images/fanart/24.webp">
+                  <img src="images/fanart/24.webp" alt="ZUTOMAYO 2" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 2</span><span>FANART</span></div>
+                </article>
+        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="25" data-full="images/fanart/25.webp">
+                  <img src="images/fanart/25.webp" alt="ZUTOMAYO 1" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 1</span><span>FANART</span></div>
+                </article>
+        <article class="work-card" data-category="fanart" tabindex="0" data-project="26" data-full="images/fanart/26.webp">
+                  <img src="images/fanart/26.webp" alt="ZUTOMAYO 0" loading="lazy" decoding="async" />
+                  <div class="card-meta"><span>ZUTOMAYO 0</span><span>FANART</span></div>
+                </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 YOUNGJIN</span>
+    <a href="#home">BACK TO HOME ↑</a>
+  </footer>
+
+  <dialog class="project-dialog" id="projectDialog" aria-label="작품 크게 보기">
+    <button class="dialog-close" aria-label="닫기">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="이전 작품">‹</button>
+    <div class="lightbox-stage" id="lightboxStage">
+      <img class="lightbox-image" id="dialogImage" alt="작품 크게 보기" />
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="다음 작품">›</button>
+  </dialog>
+
+  <script>
+const filters = document.querySelectorAll('.filter');
+const cards = document.querySelectorAll('.work-card');
+const dialog = document.getElementById('projectDialog');
+const closeBtn = document.querySelector('.dialog-close');
+const dialogImage = document.getElementById('dialogImage');
+const lightboxStage = document.getElementById('lightboxStage');
+const prevBtn = document.getElementById('lightboxPrev');
+const nextBtn = document.getElementById('lightboxNext');
+
+let currentCard = null;
+
+function applyFilter(selected) {
+  filters.forEach(item => item.classList.toggle('is-active', item.dataset.filter === selected));
+  cards.forEach(card => {
+    card.classList.toggle('is-hidden', card.dataset.category !== selected);
+  });
+}
+
+filters.forEach(button => {
+  button.addEventListener('click', () => applyFilter(button.dataset.filter));
+});
+
+document.querySelectorAll('[data-nav-filter]').forEach(link => {
+  link.addEventListener('click', () => applyFilter(link.dataset.navFilter));
+});
+
+document.querySelector('[data-home-link]').addEventListener('click', () => {
+  filters.forEach(item => item.classList.remove('is-active'));
+  cards.forEach(card => card.classList.remove('is-hidden'));
+});
+
+// 첫 진입에서는 Character 카테고리를 기본으로 보여줍니다.
+applyFilter('character');
+
+function visibleCards() {
+  return [...cards].filter(card => !card.classList.contains('is-hidden'));
+}
+
+function showCard(card) {
+  if (!card) return;
+  currentCard = card;
+  const img = card.querySelector('img');
+  dialogImage.src = card.dataset.full || img.src;
+  dialogImage.alt = '작품 크게 보기';
+}
+
+function openProject(card) {
+  showCard(card);
+  dialog.showModal();
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function moveProject(direction) {
+  const list = visibleCards();
+  if (!list.length) return;
+
+  let index = list.indexOf(currentCard);
+  if (index < 0) index = 0;
+
+  const nextIndex = (index + direction + list.length) % list.length;
+  showCard(list[nextIndex]);
+}
+
+cards.forEach(card => {
+  card.addEventListener('click', () => openProject(card));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProject(card);
+    }
+  });
+});
+
+function closeProject() {
+  if (dialog.open) dialog.close();
+  document.documentElement.style.overflow = '';
+}
+
+closeBtn.addEventListener('click', closeProject);
+prevBtn.addEventListener('click', event => {
+  event.stopPropagation();
+  moveProject(-1);
+});
+nextBtn.addEventListener('click', event => {
+  event.stopPropagation();
+  moveProject(1);
+});
+
+dialogImage.addEventListener('click', event => event.stopPropagation());
+
+lightboxStage.addEventListener('click', event => {
+  if (event.target === lightboxStage) closeProject();
+});
+
+document.addEventListener('keydown', event => {
+  if (!dialog.open) return;
+
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    moveProject(-1);
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    moveProject(1);
+  }
+});
+
+dialog.addEventListener('close', () => {
+  document.documentElement.style.overflow = '';
+  currentCard = null;
+});
+</script>
+</body>
+</html>
