@@ -142,6 +142,14 @@ main { padding: 0 var(--pad); }
   align-items: start;
   gap: clamp(18px, 2.2vw, 34px) clamp(14px, 1.5vw, 24px);
 }
+.gallery-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
 .work-card { grid-column: span 4; cursor: pointer; transition: opacity .2s ease; }
 .work-card.wide { grid-column: span 8; }
 .work-card.is-hidden { display: none; }
@@ -385,111 +393,8 @@ main { padding: 0 var(--pad); }
         </div>
       </div>
 
-      <div class="gallery" id="gallery">
-        <article class="work-card" data-category="character" tabindex="0" data-project="01" data-full="images/character/01.webp">
-                  <img src="images/character/01.webp" alt="SHARK PIRATE" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>SHARK PIRATE</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card wide" data-category="character" tabindex="0" data-project="02" data-full="images/character/02.webp">
-                  <img src="images/character/02.webp" alt="SHARK PIRATE DESIGN" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>SHARK PIRATE DESIGN</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card" data-category="character" tabindex="0" data-project="03" data-full="images/character/03.webp">
-                  <img src="images/character/03.webp" alt="SHARK PIRATE SD" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>SHARK PIRATE SD</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card" data-category="character" tabindex="0" data-project="04" data-full="images/character/04.webp">
-                  <img src="images/character/04.webp" alt="TIME MACHINE" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>TIME MACHINE</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card" data-category="character" tabindex="0" data-project="05" data-full="images/character/05.webp">
-                  <img src="images/character/05.webp" alt="URBAN FANTASY" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>URBAN FANTASY</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card tall" data-category="character" tabindex="0" data-project="06" data-full="images/character/06.webp">
-                  <img src="images/character/06.webp" alt="URBAN FANTASY A" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>URBAN FANTASY A</span><span>CHARACTER</span></div>
-                </article>
-        <article class="work-card" data-category="illustration" tabindex="0" data-project="07" data-full="images/illustration/07.webp">
-                  <img src="images/illustration/07.webp" alt="BOOK 1" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>BOOK 1</span><span>ILLUSTRATION</span></div>
-                </article>
-        <article class="work-card tall" data-category="study" tabindex="0" data-project="08" data-full="images/study/08.webp">
-                  <img src="images/study/08.webp" alt="STUDY 9" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 9</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card" data-category="study" tabindex="0" data-project="09" data-full="images/study/09.webp">
-                  <img src="images/study/09.webp" alt="STUDY 8" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 8</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card" data-category="study" tabindex="0" data-project="10" data-full="images/study/10.webp">
-                  <img src="images/study/10.webp" alt="STUDY 7" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 7</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card" data-category="study" tabindex="0" data-project="11" data-full="images/study/11.webp">
-                  <img src="images/study/11.webp" alt="STUDY 6" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 6</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card tall" data-category="study" tabindex="0" data-project="12" data-full="images/study/12.webp">
-                  <img src="images/study/12.webp" alt="STUDY 5" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 5</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card" data-category="study" tabindex="0" data-project="13" data-full="images/study/13.webp">
-                  <img src="images/study/13.webp" alt="STUDY 4" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 4</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card tall" data-category="study" tabindex="0" data-project="14" data-full="images/study/14.webp">
-                  <img src="images/study/14.webp" alt="STUDY 3" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 3</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card tall" data-category="study" tabindex="0" data-project="15" data-full="images/study/15.webp">
-                  <img src="images/study/15.webp" alt="STUDY 2" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 2</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card tall" data-category="study" tabindex="0" data-project="16" data-full="images/study/16.webp">
-                  <img src="images/study/16.webp" alt="STUDY 1" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>STUDY 1</span><span>STUDY</span></div>
-                </article>
-        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="17" data-full="images/fanart/17.webp">
-                  <img src="images/fanart/17.webp" alt="BLUE ARCHIVE" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>BLUE ARCHIVE</span><span>FANART</span></div>
-                </article>
-        <article class="work-card wide" data-category="fanart" tabindex="0" data-project="18" data-full="images/fanart/18.webp">
-                  <img src="images/fanart/18.webp" alt="ELDEN RING" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ELDEN RING</span><span>FANART</span></div>
-                </article>
-        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="19" data-full="images/fanart/19.webp">
-                  <img src="images/fanart/19.webp" alt="MECHA-UNI TO KURI" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>MECHA-UNI TO KURI</span><span>FANART</span></div>
-                </article>
-        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="20" data-full="images/fanart/20.webp">
-                  <img src="images/fanart/20.webp" alt="ZUTOMAYO 6" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 6</span><span>FANART</span></div>
-                </article>
-        <article class="work-card" data-category="fanart" tabindex="0" data-project="21" data-full="images/fanart/21.webp">
-                  <img src="images/fanart/21.webp" alt="ZUTOMAYO 5" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 5</span><span>FANART</span></div>
-                </article>
-        <article class="work-card" data-category="fanart" tabindex="0" data-project="22" data-full="images/fanart/22.webp">
-                  <img src="images/fanart/22.webp" alt="ZUTOMAYO 4" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 4</span><span>FANART</span></div>
-                </article>
-        <article class="work-card" data-category="fanart" tabindex="0" data-project="23" data-full="images/fanart/23.webp">
-                  <img src="images/fanart/23.webp" alt="ZUTOMAYO 3" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 3</span><span>FANART</span></div>
-                </article>
-        <article class="work-card" data-category="fanart" tabindex="0" data-project="24" data-full="images/fanart/24.webp">
-                  <img src="images/fanart/24.webp" alt="ZUTOMAYO 2" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 2</span><span>FANART</span></div>
-                </article>
-        <article class="work-card tall" data-category="fanart" tabindex="0" data-project="25" data-full="images/fanart/25.webp">
-                  <img src="images/fanart/25.webp" alt="ZUTOMAYO 1" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 1</span><span>FANART</span></div>
-                </article>
-        <article class="work-card" data-category="fanart" tabindex="0" data-project="26" data-full="images/fanart/26.webp">
-                  <img src="images/fanart/26.webp" alt="ZUTOMAYO 0" loading="lazy" decoding="async" />
-                  <div class="card-meta"><span>ZUTOMAYO 0</span><span>FANART</span></div>
-                </article>
+      <div class="gallery" id="gallery" aria-live="polite">
+        <p class="gallery-status" id="galleryStatus">작품을 불러오는 중입니다.</p>
       </div>
     </section>
 
@@ -511,7 +416,8 @@ main { padding: 0 var(--pad); }
 
   <script>
 const filters = document.querySelectorAll('.filter');
-const cards = document.querySelectorAll('.work-card');
+const gallery = document.getElementById('gallery');
+const galleryStatus = document.getElementById('galleryStatus');
 const dialog = document.getElementById('projectDialog');
 const closeBtn = document.querySelector('.dialog-close');
 const dialogImage = document.getElementById('dialogImage');
@@ -520,12 +426,86 @@ const prevBtn = document.getElementById('lightboxPrev');
 const nextBtn = document.getElementById('lightboxNext');
 
 let currentCard = null;
+let activeFilter = 'character';
+
+function cards() {
+  return [...document.querySelectorAll('.work-card')];
+}
 
 function applyFilter(selected) {
+  activeFilter = selected;
   filters.forEach(item => item.classList.toggle('is-active', item.dataset.filter === selected));
-  cards.forEach(card => {
+  cards().forEach(card => {
     card.classList.toggle('is-hidden', card.dataset.category !== selected);
   });
+}
+
+function bindCard(card) {
+  card.addEventListener('click', () => openProject(card));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProject(card);
+    }
+  });
+}
+
+function createArtworkCard(artwork, index) {
+  const card = document.createElement('article');
+  card.className = 'work-card';
+  card.dataset.category = artwork.category;
+  card.dataset.project = String(index + 1).padStart(2, '0');
+  card.dataset.full = artwork.image;
+  card.tabIndex = 0;
+
+  const img = document.createElement('img');
+  img.src = artwork.image;
+  img.alt = artwork.title || 'Portfolio artwork';
+  img.loading = 'lazy';
+  img.decoding = 'async';
+  img.addEventListener('load', () => {
+    const ratio = img.naturalWidth / img.naturalHeight;
+    card.classList.toggle('wide', ratio >= 1.55);
+    card.classList.toggle('tall', ratio <= 0.78);
+  }, { once: true });
+
+  const meta = document.createElement('div');
+  meta.className = 'card-meta';
+  const title = document.createElement('span');
+  title.textContent = artwork.title || 'UNTITLED';
+  const category = document.createElement('span');
+  category.textContent = (artwork.category || '').toUpperCase();
+  meta.append(title, category);
+
+  card.append(img, meta);
+  bindCard(card);
+  return card;
+}
+
+async function loadPortfolio() {
+  try {
+    const response = await fetch('portfolio.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error('portfolio.json must be an array');
+
+    const artworks = data
+      .filter(item => item && item.published !== false && item.image && item.category)
+      .slice()
+      .reverse();
+
+    gallery.innerHTML = '';
+    artworks.forEach((artwork, index) => gallery.appendChild(createArtworkCard(artwork, index)));
+
+    if (!artworks.length) {
+      gallery.innerHTML = '<p class="gallery-status">아직 등록된 작품이 없습니다.</p>';
+      return;
+    }
+    applyFilter(activeFilter);
+  } catch (error) {
+    console.error(error);
+    gallery.innerHTML = '<p class="gallery-status">작품 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
+  }
 }
 
 filters.forEach(button => {
@@ -538,14 +518,11 @@ document.querySelectorAll('[data-nav-filter]').forEach(link => {
 
 document.querySelector('[data-home-link]').addEventListener('click', () => {
   filters.forEach(item => item.classList.remove('is-active'));
-  cards.forEach(card => card.classList.remove('is-hidden'));
+  cards().forEach(card => card.classList.remove('is-hidden'));
 });
 
-// 첫 진입에서는 Character 카테고리를 기본으로 보여줍니다.
-applyFilter('character');
-
 function visibleCards() {
-  return [...cards].filter(card => !card.classList.contains('is-hidden'));
+  return cards().filter(card => !card.classList.contains('is-hidden'));
 }
 
 function showCard(card) {
@@ -565,23 +542,11 @@ function openProject(card) {
 function moveProject(direction) {
   const list = visibleCards();
   if (!list.length) return;
-
   let index = list.indexOf(currentCard);
   if (index < 0) index = 0;
-
   const nextIndex = (index + direction + list.length) % list.length;
   showCard(list[nextIndex]);
 }
-
-cards.forEach(card => {
-  card.addEventListener('click', () => openProject(card));
-  card.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openProject(card);
-    }
-  });
-});
 
 function closeProject() {
   if (dialog.open) dialog.close();
@@ -589,37 +554,23 @@ function closeProject() {
 }
 
 closeBtn.addEventListener('click', closeProject);
-prevBtn.addEventListener('click', event => {
-  event.stopPropagation();
-  moveProject(-1);
-});
-nextBtn.addEventListener('click', event => {
-  event.stopPropagation();
-  moveProject(1);
-});
-
+prevBtn.addEventListener('click', event => { event.stopPropagation(); moveProject(-1); });
+nextBtn.addEventListener('click', event => { event.stopPropagation(); moveProject(1); });
 dialogImage.addEventListener('click', event => event.stopPropagation());
-
-lightboxStage.addEventListener('click', event => {
-  if (event.target === lightboxStage) closeProject();
-});
+lightboxStage.addEventListener('click', event => { if (event.target === lightboxStage) closeProject(); });
 
 document.addEventListener('keydown', event => {
   if (!dialog.open) return;
-
-  if (event.key === 'ArrowLeft') {
-    event.preventDefault();
-    moveProject(-1);
-  } else if (event.key === 'ArrowRight') {
-    event.preventDefault();
-    moveProject(1);
-  }
+  if (event.key === 'ArrowLeft') { event.preventDefault(); moveProject(-1); }
+  else if (event.key === 'ArrowRight') { event.preventDefault(); moveProject(1); }
 });
 
 dialog.addEventListener('close', () => {
   document.documentElement.style.overflow = '';
   currentCard = null;
 });
+
+loadPortfolio();
 </script>
 </body>
 </html>
