@@ -154,5 +154,11 @@
     "category": "character",
     "image": "/images/character/01.webp",
     "published": true
+  },
+  {
+    "title": "테스트",
+    "category": "study",
+    "image": "/images/uploads/0d5954d1c95f4ee1beea12591e0375d8.jpg",
+    "published": true
   }
 ]
