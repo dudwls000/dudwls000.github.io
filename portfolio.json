@@ -154,5 +154,11 @@
     "category": "character",
     "image": "/images/character/01.webp",
     "published": true
+  },
+  {
+    "title": "STUDY 10",
+    "category": "study",
+    "image": "/images/uploads/4.jpg",
+    "published": true
   }
 ]
